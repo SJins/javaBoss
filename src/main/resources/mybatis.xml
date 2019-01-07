@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<!-- 消除下划线的影响 -->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+	</settings>
+	<plugins>
+		<!-- com.github.pagehelper为PageHelper类所在包名 -->
+		<plugin interceptor="com.github.pagehelper.PageInterceptor">
+			<!-- 设置使用的数据库方言 -->
+			<property name="helperDialect" value="mysql" />
+		</plugin>
+	</plugins>
+
+</configuration>
