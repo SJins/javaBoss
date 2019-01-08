@@ -18,6 +18,9 @@ public class GoodsTypeController {
 
     @RequestMapping("goodsType/findAll.do")
     @ResponseBody
+    /**
+     * 展示全部的商品菜单
+     */
     public List<GoodsType> findAll() {
 
         return goodsTypeService.findAll();
