@@ -14,4 +14,7 @@ public interface ReceivingDetailMapper {
     int updateByPrimaryKeySelective(ReceivingDetail record);
 
     int updateByPrimaryKey(ReceivingDetail record);
+
+    //根据id查找我的收获地址详情
+    public ReceivingDetail findOneRec(Integer uid);
 }

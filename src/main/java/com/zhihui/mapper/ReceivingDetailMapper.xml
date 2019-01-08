@@ -11,6 +11,23 @@
     <result column="flag" jdbcType="INTEGER" property="flag" />
     <result column="uid" jdbcType="INTEGER" property="uid" />
   </resultMap>
+
+  <resultMap id="BaseResultMap1" type="com.zhihui.entity.ReceivingDetail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="phone" jdbcType="INTEGER" property="phone" />
+    <result column="counntry" jdbcType="VARCHAR" property="counntry" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+
+    <association property="user"
+                 resultMap="com.zhihui.dao.UserMapper.BaseResultMap"
+    >
+    </association>
+  </resultMap>
+
   <sql id="Base_Column_List">
     id, name, address, phone, counntry, city, flag, uid
   </sql>
@@ -125,4 +142,11 @@
       uid = #{uid,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="findOneRec" parameterType="java.lang.Integer" resultMap="BaseResultMap1">
+    SELECT * FROM t_receiving_detail r
+    INNER JOIN t_user u ON u.id=r.uid
+    WHERE r.uid=#{uid}
+  </select>
+
 </mapper>
