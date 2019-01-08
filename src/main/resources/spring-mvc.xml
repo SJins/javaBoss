@@ -47,7 +47,7 @@
 		<property name="converters">
 			<!-- 注入的是列表 -->
 			<list>
-				<bean class="com.qfedu.converter.CustomerDateConvert" />
+				<bean class="com.zhihui.converter.CustomerDateConvert" />
 			</list>
 		</property>
 	</bean>

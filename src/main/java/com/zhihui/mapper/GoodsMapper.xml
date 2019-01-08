@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhihui.dao.GoodsMapper">
+  <resultMap id="BaseResultMap" type="com.zhihui.entity.Goods">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="shelftime" jdbcType="TIMESTAMP" property="shelftime" />
+    <result column="commentnum" jdbcType="INTEGER" property="commentnum" />
+    <result column="collectionnum" jdbcType="INTEGER" property="collectionnum" />
+    <result column="brief" jdbcType="VARCHAR" property="brief" />
+    <result column="discount" jdbcType="INTEGER" property="discount" />
+    <result column="discountdetail" jdbcType="VARCHAR" property="discountdetail" />
+    <result column="gtid" jdbcType="INTEGER" property="gtid" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+    <result column="price" jdbcType="REAL" property="price" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, shelftime, commentnum, collectionnum, brief, discount, discountdetail, 
+    gtid, flag, price
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_goods
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_goods
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zhihui.entity.Goods">
+    insert into t_goods (id, name, shelftime, 
+      commentnum, collectionnum, brief, 
+      discount, discountdetail, gtid, 
+      flag, price)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{shelftime,jdbcType=TIMESTAMP}, 
+      #{commentnum,jdbcType=INTEGER}, #{collectionnum,jdbcType=INTEGER}, #{brief,jdbcType=VARCHAR}, 
+      #{discount,jdbcType=INTEGER}, #{discountdetail,jdbcType=VARCHAR}, #{gtid,jdbcType=INTEGER}, 
+      #{flag,jdbcType=INTEGER}, #{price,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zhihui.entity.Goods">
+    insert into t_goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="shelftime != null">
+        shelftime,
+      </if>
+      <if test="commentnum != null">
+        commentnum,
+      </if>
+      <if test="collectionnum != null">
+        collectionnum,
+      </if>
+      <if test="brief != null">
+        brief,
+      </if>
+      <if test="discount != null">
+        discount,
+      </if>
+      <if test="discountdetail != null">
+        discountdetail,
+      </if>
+      <if test="gtid != null">
+        gtid,
+      </if>
+      <if test="flag != null">
+        flag,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="shelftime != null">
+        #{shelftime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commentnum != null">
+        #{commentnum,jdbcType=INTEGER},
+      </if>
+      <if test="collectionnum != null">
+        #{collectionnum,jdbcType=INTEGER},
+      </if>
+      <if test="brief != null">
+        #{brief,jdbcType=VARCHAR},
+      </if>
+      <if test="discount != null">
+        #{discount,jdbcType=INTEGER},
+      </if>
+      <if test="discountdetail != null">
+        #{discountdetail,jdbcType=VARCHAR},
+      </if>
+      <if test="gtid != null">
+        #{gtid,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zhihui.entity.Goods">
+    update t_goods
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="shelftime != null">
+        shelftime = #{shelftime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commentnum != null">
+        commentnum = #{commentnum,jdbcType=INTEGER},
+      </if>
+      <if test="collectionnum != null">
+        collectionnum = #{collectionnum,jdbcType=INTEGER},
+      </if>
+      <if test="brief != null">
+        brief = #{brief,jdbcType=VARCHAR},
+      </if>
+      <if test="discount != null">
+        discount = #{discount,jdbcType=INTEGER},
+      </if>
+      <if test="discountdetail != null">
+        discountdetail = #{discountdetail,jdbcType=VARCHAR},
+      </if>
+      <if test="gtid != null">
+        gtid = #{gtid,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=REAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zhihui.entity.Goods">
+    update t_goods
+    set name = #{name,jdbcType=VARCHAR},
+      shelftime = #{shelftime,jdbcType=TIMESTAMP},
+      commentnum = #{commentnum,jdbcType=INTEGER},
+      collectionnum = #{collectionnum,jdbcType=INTEGER},
+      brief = #{brief,jdbcType=VARCHAR},
+      discount = #{discount,jdbcType=INTEGER},
+      discountdetail = #{discountdetail,jdbcType=VARCHAR},
+      gtid = #{gtid,jdbcType=INTEGER},
+      flag = #{flag,jdbcType=INTEGER},
+      price = #{price,jdbcType=REAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
