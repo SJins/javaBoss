@@ -2,6 +2,8 @@ package com.zhihui.dao;
 
 import com.zhihui.entity.GoodsType;
 
+import java.util.List;
+
 public interface GoodsTypeMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface GoodsTypeMapper {
     int updateByPrimaryKeySelective(GoodsType record);
 
     int updateByPrimaryKey(GoodsType record);
+
+    List<GoodsType> findAll();
 }

@@ -1,6 +1,7 @@
 package com.zhihui.service.impl;
 
 import com.zhihui.dao.GoodsTypeMapper;
+import com.zhihui.entity.GoodsType;
 import com.zhihui.service.GoodsTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -12,7 +13,7 @@ public class GoodsTypeServiceImpl implements GoodsTypeService {
     private GoodsTypeMapper goodsDao;
 
     @Override
-    public List<GoodsTypeService> findAll() {
-        return null;
+    public List<GoodsType> findAll() {
+        return goodsDao.findAll();
     }
 }
