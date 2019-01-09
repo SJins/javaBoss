@@ -48,7 +48,7 @@ public class GoodsViewServiceImpl implements GoodsViewVoService {
                 view.setCommentnum(goods.getCommentnum());
                 view.setDiscountdetail(goods.getDiscountdetail());
                 view.setId(goods.getId());
-                view.setName(goods.getName());
+                view.setName(goods.getGoodsname());
 
 
                 Date now = new Date();

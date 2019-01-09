@@ -3,7 +3,7 @@
 <mapper namespace="com.zhihui.dao.ReceivingDetailMapper">
   <resultMap id="BaseResultMap" type="com.zhihui.entity.ReceivingDetail">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="rname" jdbcType="VARCHAR" property="rname" />
     <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="phone" jdbcType="INTEGER" property="phone" />
     <result column="counntry" jdbcType="VARCHAR" property="counntry" />
@@ -11,25 +11,8 @@
     <result column="flag" jdbcType="INTEGER" property="flag" />
     <result column="uid" jdbcType="INTEGER" property="uid" />
   </resultMap>
-
-  <resultMap id="BaseResultMap1" type="com.zhihui.entity.ReceivingDetail">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="address" jdbcType="VARCHAR" property="address" />
-    <result column="phone" jdbcType="INTEGER" property="phone" />
-    <result column="counntry" jdbcType="VARCHAR" property="counntry" />
-    <result column="city" jdbcType="VARCHAR" property="city" />
-    <result column="flag" jdbcType="INTEGER" property="flag" />
-    <result column="uid" jdbcType="INTEGER" property="uid" />
-
-    <association property="user"
-                 resultMap="com.zhihui.dao.UserMapper.BaseResultMap"
-    >
-    </association>
-  </resultMap>
-
   <sql id="Base_Column_List">
-    id, name, address, phone, counntry, city, flag, uid
+    id, rname, address, phone, counntry, city, flag, uid
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -42,10 +25,10 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.zhihui.entity.ReceivingDetail">
-    insert into t_receiving_detail (id, name, address, 
+    insert into t_receiving_detail (id, rname, address, 
       phone, counntry, city, 
       flag, uid)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{rname,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
       #{phone,jdbcType=INTEGER}, #{counntry,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
       #{flag,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER})
   </insert>
@@ -55,8 +38,8 @@
       <if test="id != null">
         id,
       </if>
-      <if test="name != null">
-        name,
+      <if test="rname != null">
+        rname,
       </if>
       <if test="address != null">
         address,
@@ -81,8 +64,8 @@
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
+      <if test="rname != null">
+        #{rname,jdbcType=VARCHAR},
       </if>
       <if test="address != null">
         #{address,jdbcType=VARCHAR},
@@ -107,8 +90,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.zhihui.entity.ReceivingDetail">
     update t_receiving_detail
     <set>
-      <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
+      <if test="rname != null">
+        rname = #{rname,jdbcType=VARCHAR},
       </if>
       <if test="address != null">
         address = #{address,jdbcType=VARCHAR},
@@ -133,7 +116,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.zhihui.entity.ReceivingDetail">
     update t_receiving_detail
-    set name = #{name,jdbcType=VARCHAR},
+    set rname = #{rname,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=INTEGER},
       counntry = #{counntry,jdbcType=VARCHAR},
@@ -143,10 +126,10 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
+
   <select id="findOneRec" parameterType="java.lang.Integer" resultMap="BaseResultMap1">
     SELECT * FROM t_receiving_detail r
     INNER JOIN t_user u ON u.id=r.uid
     WHERE r.uid=#{uid}
   </select>
-
 </mapper>

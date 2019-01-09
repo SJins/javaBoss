@@ -1,10 +1,6 @@
 package com.zhihui.vo;
 
-import com.zhihui.entity.Goods;
-
 import java.math.BigDecimal;
-import java.util.Date;
-import java.util.List;
 
 public class GoodsViewVo {
     private String imgurl;

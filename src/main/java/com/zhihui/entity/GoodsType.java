@@ -3,7 +3,7 @@ package com.zhihui.entity;
 public class GoodsType {
     private Integer id;
 
-    private String name;
+    private String tname;
 
     private String icon;
 
@@ -15,12 +15,12 @@ public class GoodsType {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTname() {
+        return tname;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setTname(String tname) {
+        this.tname = tname == null ? null : tname.trim();
     }
 
     public String getIcon() {

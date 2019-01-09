@@ -9,7 +9,7 @@ public class Reply {
 
     private Integer cid;
 
-    private String content;
+    private String rcontent;
 
     private Integer parentid;
 
@@ -39,12 +39,12 @@ public class Reply {
         this.cid = cid;
     }
 
-    public String getContent() {
-        return content;
+    public String getRcontent() {
+        return rcontent;
     }
 
-    public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
+    public void setRcontent(String rcontent) {
+        this.rcontent = rcontent == null ? null : rcontent.trim();
     }
 
     public Integer getParentid() {

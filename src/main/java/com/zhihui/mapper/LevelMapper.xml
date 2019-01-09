@@ -3,10 +3,10 @@
 <mapper namespace="com.zhihui.dao.LevelMapper">
   <resultMap id="BaseResultMap" type="com.zhihui.entity.Level">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="levelname" jdbcType="VARCHAR" property="levelname" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, name
+    id, levelname
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -19,8 +19,8 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.zhihui.entity.Level">
-    insert into t_level (id, name)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR})
+    insert into t_level (id, levelname)
+    values (#{id,jdbcType=INTEGER}, #{levelname,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.zhihui.entity.Level">
     insert into t_level
@@ -28,31 +28,31 @@
       <if test="id != null">
         id,
       </if>
-      <if test="name != null">
-        name,
+      <if test="levelname != null">
+        levelname,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
+      <if test="levelname != null">
+        #{levelname,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.zhihui.entity.Level">
     update t_level
     <set>
-      <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
+      <if test="levelname != null">
+        levelname = #{levelname,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.zhihui.entity.Level">
     update t_level
-    set name = #{name,jdbcType=VARCHAR}
+    set levelname = #{levelname,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

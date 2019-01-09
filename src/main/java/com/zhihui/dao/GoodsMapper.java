@@ -1,7 +1,6 @@
 package com.zhihui.dao;
 
 import com.zhihui.entity.Goods;
-import org.hibernate.validator.constraints.URL;
 
 import java.util.List;
 import java.util.Map;

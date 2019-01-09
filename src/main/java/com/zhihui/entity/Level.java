@@ -3,7 +3,7 @@ package com.zhihui.entity;
 public class Level {
     private Integer id;
 
-    private String name;
+    private String levelname;
 
     public Integer getId() {
         return id;
@@ -13,11 +13,11 @@ public class Level {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getLevelname() {
+        return levelname;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setLevelname(String levelname) {
+        this.levelname = levelname == null ? null : levelname.trim();
     }
 }

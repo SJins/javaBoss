@@ -5,12 +5,12 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="uid" jdbcType="INTEGER" property="uid" />
     <result column="cid" jdbcType="INTEGER" property="cid" />
-    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="rcontent" jdbcType="VARCHAR" property="rcontent" />
     <result column="parentid" jdbcType="INTEGER" property="parentid" />
     <result column="reply_time" jdbcType="TIMESTAMP" property="replyTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, uid, cid, content, parentid, reply_time
+    id, uid, cid, rcontent, parentid, reply_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -24,10 +24,10 @@
   </delete>
   <insert id="insert" parameterType="com.zhihui.entity.Reply">
     insert into t_reply (id, uid, cid, 
-      content, parentid, reply_time
+      rcontent, parentid, reply_time
       )
     values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, 
-      #{content,jdbcType=VARCHAR}, #{parentid,jdbcType=INTEGER}, #{replyTime,jdbcType=TIMESTAMP}
+      #{rcontent,jdbcType=VARCHAR}, #{parentid,jdbcType=INTEGER}, #{replyTime,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.zhihui.entity.Reply">
@@ -42,8 +42,8 @@
       <if test="cid != null">
         cid,
       </if>
-      <if test="content != null">
-        content,
+      <if test="rcontent != null">
+        rcontent,
       </if>
       <if test="parentid != null">
         parentid,
@@ -62,8 +62,8 @@
       <if test="cid != null">
         #{cid,jdbcType=INTEGER},
       </if>
-      <if test="content != null">
-        #{content,jdbcType=VARCHAR},
+      <if test="rcontent != null">
+        #{rcontent,jdbcType=VARCHAR},
       </if>
       <if test="parentid != null">
         #{parentid,jdbcType=INTEGER},
@@ -82,8 +82,8 @@
       <if test="cid != null">
         cid = #{cid,jdbcType=INTEGER},
       </if>
-      <if test="content != null">
-        content = #{content,jdbcType=VARCHAR},
+      <if test="rcontent != null">
+        rcontent = #{rcontent,jdbcType=VARCHAR},
       </if>
       <if test="parentid != null">
         parentid = #{parentid,jdbcType=INTEGER},
@@ -98,7 +98,7 @@
     update t_reply
     set uid = #{uid,jdbcType=INTEGER},
       cid = #{cid,jdbcType=INTEGER},
-      content = #{content,jdbcType=VARCHAR},
+      rcontent = #{rcontent,jdbcType=VARCHAR},
       parentid = #{parentid,jdbcType=INTEGER},
       reply_time = #{replyTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}

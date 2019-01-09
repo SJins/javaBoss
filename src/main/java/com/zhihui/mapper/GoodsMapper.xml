@@ -3,7 +3,7 @@
 <mapper namespace="com.zhihui.dao.GoodsMapper">
   <resultMap id="BaseResultMap" type="com.zhihui.entity.Goods">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="goodsname" jdbcType="VARCHAR" property="goodsname" />
     <result column="shelftime" jdbcType="TIMESTAMP" property="shelftime" />
     <result column="commentnum" jdbcType="INTEGER" property="commentnum" />
     <result column="collectionnum" jdbcType="INTEGER" property="collectionnum" />
@@ -15,7 +15,7 @@
     <result column="price" jdbcType="REAL" property="price" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, name, shelftime, commentnum, collectionnum, brief, discount, discountdetail, 
+    id, goodsname, shelftime, commentnum, collectionnum, brief, discount, discountdetail, 
     gtid, flag, price
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -29,11 +29,11 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.zhihui.entity.Goods">
-    insert into t_goods (id, name, shelftime, 
+    insert into t_goods (id, goodsname, shelftime, 
       commentnum, collectionnum, brief, 
       discount, discountdetail, gtid, 
       flag, price)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{shelftime,jdbcType=TIMESTAMP}, 
+    values (#{id,jdbcType=INTEGER}, #{goodsname,jdbcType=VARCHAR}, #{shelftime,jdbcType=TIMESTAMP}, 
       #{commentnum,jdbcType=INTEGER}, #{collectionnum,jdbcType=INTEGER}, #{brief,jdbcType=VARCHAR}, 
       #{discount,jdbcType=INTEGER}, #{discountdetail,jdbcType=VARCHAR}, #{gtid,jdbcType=INTEGER}, 
       #{flag,jdbcType=INTEGER}, #{price,jdbcType=REAL})
@@ -44,8 +44,8 @@
       <if test="id != null">
         id,
       </if>
-      <if test="name != null">
-        name,
+      <if test="goodsname != null">
+        goodsname,
       </if>
       <if test="shelftime != null">
         shelftime,
@@ -79,8 +79,8 @@
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
+      <if test="goodsname != null">
+        #{goodsname,jdbcType=VARCHAR},
       </if>
       <if test="shelftime != null">
         #{shelftime,jdbcType=TIMESTAMP},
@@ -114,8 +114,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.zhihui.entity.Goods">
     update t_goods
     <set>
-      <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
+      <if test="goodsname != null">
+        goodsname = #{goodsname,jdbcType=VARCHAR},
       </if>
       <if test="shelftime != null">
         shelftime = #{shelftime,jdbcType=TIMESTAMP},
@@ -149,7 +149,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.zhihui.entity.Goods">
     update t_goods
-    set name = #{name,jdbcType=VARCHAR},
+    set goodsname = #{goodsname,jdbcType=VARCHAR},
       shelftime = #{shelftime,jdbcType=TIMESTAMP},
       commentnum = #{commentnum,jdbcType=INTEGER},
       collectionnum = #{collectionnum,jdbcType=INTEGER},
@@ -161,6 +161,7 @@
       price = #{price,jdbcType=REAL}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
 
   <select id="selectByPage" parameterType="java.util.Map" resultMap="BaseResultMap">
     select
@@ -178,4 +179,5 @@
     count(1)
     from t_goods
   </select>
+
 </mapper>

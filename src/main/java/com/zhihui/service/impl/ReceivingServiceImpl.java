@@ -1,7 +1,6 @@
 package com.zhihui.service.impl;
 
 import com.zhihui.dao.ReceivingDetailMapper;
-import com.zhihui.dao.ReplyMapper;
 import com.zhihui.entity.ReceivingDetail;
 import com.zhihui.service.ReceivingService;
 import com.zhihui.vo.ResultVo;

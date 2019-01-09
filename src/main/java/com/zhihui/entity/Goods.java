@@ -5,7 +5,7 @@ import java.util.Date;
 public class Goods {
     private Integer id;
 
-    private String name;
+    private String goodsname;
 
     private Date shelftime;
 
@@ -33,12 +33,12 @@ public class Goods {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getGoodsname() {
+        return goodsname;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setGoodsname(String goodsname) {
+        this.goodsname = goodsname == null ? null : goodsname.trim();
     }
 
     public Date getShelftime() {
