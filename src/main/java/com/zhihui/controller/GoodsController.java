@@ -1,5 +1,6 @@
 package com.zhihui.controller;
 
+import com.tools.vo.PageBeanVo;
 import com.zhihui.service.GoodsViewVoService;
 import com.zhihui.vo.GoodsViewVo;
 import io.swagger.annotations.Api;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 
 @Api(produces = "商品类接口文档", value = "接口文档")
 @Controller
@@ -25,9 +25,9 @@ public class GoodsController {
     /**
      * 展示商品列表
      */
-    public List<GoodsViewVo> findAllByGtid(Integer gtid) {
+    public PageBeanVo<GoodsViewVo> findAllByGtid(Integer gtid, int page, int limit) {
 
-        return goodsViewVoService.findgoodsView(gtid);
+        return goodsViewVoService.findgoodsView(gtid,page,limit);
     }
 
 
