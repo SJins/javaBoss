@@ -1,5 +1,6 @@
 package com.zhihui.service.impl;
 
+import com.tools.vo.PageBeanVo;
 import com.zhihui.dao.GoodsMapper;
 import com.zhihui.dao.GoodsimgsMapper;
 import com.zhihui.entity.Goods;
@@ -9,10 +10,9 @@ import com.zhihui.vo.GoodsViewVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class GoodsViewServiceImpl implements GoodsViewVoService {
@@ -26,9 +26,16 @@ public class GoodsViewServiceImpl implements GoodsViewVoService {
     /**
      * 根据菜单id展示对应的商品
      */
-    public List<GoodsViewVo> findgoodsView(Integer gtid) {
+    public PageBeanVo<GoodsViewVo> findgoodsView(Integer gtid, int page, int limit) {
+
+        Map<String,Object> map = new HashMap();
+        map.put("index",(page - 1) * limit);
+        map.put("limit", limit);
+        map.put("gtid", gtid);
+
+
         // 根据菜单id查找对应的商品
-        List<Goods> goodsList = goodsDao.findGoodsByGtid(gtid);
+        List<Goods> goodsList = goodsDao.selectByPage(map);
 
         List<GoodsViewVo> list = new ArrayList<>();
         // 遍历对应菜单的商品
@@ -42,6 +49,7 @@ public class GoodsViewServiceImpl implements GoodsViewVoService {
                 view.setDiscountdetail(goods.getDiscountdetail());
                 view.setId(goods.getId());
                 view.setName(goods.getName());
+
 
                 Date now = new Date();
                 String datePoor = getDatePoor(now, goods.getShelftime());
@@ -59,6 +67,26 @@ public class GoodsViewServiceImpl implements GoodsViewVoService {
                     break;
                 }
 
+                view.setPrice(goods.getPrice());
+
+                float price = goods.getPrice();
+
+                float discount = goods.getDiscount();
+
+                // BigDecimal处理之后的价格
+                BigDecimal prices = new BigDecimal(Float.toString(price));
+                // BigDecimal处理之后的折扣
+                BigDecimal discounts = new BigDecimal(Float.toString(discount));
+                // BigDecimal处理之后的百分比
+                BigDecimal percent = new BigDecimal(Float.toString(0.1F));
+                // 折扣比例
+                BigDecimal discountPercent = discounts.multiply(percent);
+                // 折后价
+                BigDecimal dPrice = prices.multiply(discountPercent);
+                // 保留两位小数
+                BigDecimal dPrices = dPrice.setScale(2, BigDecimal.ROUND_UP);
+                view.setdPrice(dPrices);
+
 
 
                 list.add(view);
@@ -68,7 +96,7 @@ public class GoodsViewServiceImpl implements GoodsViewVoService {
 
 
 
-        return list;
+        return PageBeanVo.setPage(goodsDao.selectCount(), list);
     }
 
     /**

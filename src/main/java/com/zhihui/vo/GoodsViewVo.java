@@ -2,6 +2,7 @@ package com.zhihui.vo;
 
 import com.zhihui.entity.Goods;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -20,7 +21,25 @@ public class GoodsViewVo {
 
     private String shelftime;
 
+    private Float price;
 
+    private BigDecimal dPrice;
+
+    public Float getPrice() {
+        return price;
+    }
+
+    public void setPrice(Float price) {
+        this.price = price;
+    }
+
+    public BigDecimal getdPrice() {
+        return dPrice;
+    }
+
+    public void setdPrice(BigDecimal dPrice) {
+        this.dPrice = dPrice;
+    }
 
     public Integer getId() {
         return id;

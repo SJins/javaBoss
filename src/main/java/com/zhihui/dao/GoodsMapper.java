@@ -4,6 +4,7 @@ import com.zhihui.entity.Goods;
 import org.hibernate.validator.constraints.URL;
 
 import java.util.List;
+import java.util.Map;
 
 public interface GoodsMapper {
     int deleteByPrimaryKey(Integer id);
@@ -18,5 +19,7 @@ public interface GoodsMapper {
 
     int updateByPrimaryKey(Goods record);
 
-    List<Goods> findGoodsByGtid(Integer gtid);
+    List<Goods> selectByPage(Map<String,Object> param);
+
+    int selectCount();
 }
