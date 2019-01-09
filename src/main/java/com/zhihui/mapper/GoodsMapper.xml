@@ -161,4 +161,11 @@
       price = #{price,jdbcType=REAL}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="findGoodsByGtid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_goods
+    where gtid = #{gtid,jdbcType=INTEGER}
+  </select>
 </mapper>

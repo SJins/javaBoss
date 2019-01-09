@@ -2,6 +2,8 @@ package com.zhihui.dao;
 
 import com.zhihui.entity.Goodsimgs;
 
+import java.util.List;
+
 public interface GoodsimgsMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface GoodsimgsMapper {
     int updateByPrimaryKeySelective(Goodsimgs record);
 
     int updateByPrimaryKey(Goodsimgs record);
+
+    List<Goodsimgs> findAllImg(Integer gid);
 }
