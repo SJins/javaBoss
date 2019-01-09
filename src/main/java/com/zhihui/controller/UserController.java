@@ -24,4 +24,18 @@ public class UserController {
     public ResultVo registerUser(User user) {
         return userService.register(user);
     }
+
+    // 用户登录
+    @ApiOperation(notes = "登录接口,登录成功返回token", value = "登录")
+    @PostMapping("login.do")
+    public ResultVo login(User user){
+        return userService.login(user);
+    }
+
+    // 用户注销
+    @ApiOperation(notes = "注销接口,注销成功销毁token", value = "注销")
+    @PostMapping("logout.do")
+    public ResultVo logout(String token){
+        return userService.logout(token);
+    }
 }

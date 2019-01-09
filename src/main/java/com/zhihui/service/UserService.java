@@ -6,4 +6,8 @@ import com.zhihui.vo.ResultVo;
 public interface UserService {
 
     ResultVo register(User user);
+
+    ResultVo login(User user);
+
+    ResultVo logout(String token);
 }
