@@ -1,6 +1,9 @@
 package com.zhihui.dao;
 
 import com.zhihui.entity.Collection;
+import com.zhihui.entity.Goods;
+
+import java.util.List;
 
 public interface CollectionMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +17,7 @@ public interface CollectionMapper {
     int updateByPrimaryKeySelective(Collection record);
 
     int updateByPrimaryKey(Collection record);
+
+    //根据用户id,查询商品收藏的信息
+    public List<Goods> findCollectById(Integer uid);
 }

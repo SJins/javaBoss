@@ -8,6 +8,34 @@
     <result column="sid" jdbcType="INTEGER" property="sid" />
     <result column="uid" jdbcType="INTEGER" property="uid" />
   </resultMap>
+
+  <resultMap id="BaseResultMap1" type="com.zhihui.entity.Collection">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="collectiontime" jdbcType="TIMESTAMP" property="collectiontime" />
+    <result column="gid" jdbcType="INTEGER" property="gid" />
+    <result column="sid" jdbcType="INTEGER" property="sid" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+
+    <association property="user"
+                 resultMap="com.zhihui.dao.UserMapper.BaseResultMap"
+    >
+    </association>
+
+
+    <collection property="goods"
+                 resultMap="com.zhihui.dao.GoodsMapper.BaseResultMap"
+    >
+    </collection>
+
+    <collection property="goodsimgs"
+                 resultMap="com.zhihui.dao.GoodsimgsMapper.BaseResultMap"
+    >
+    </collection>
+
+
+
+  </resultMap>
+
   <sql id="Base_Column_List">
     id, collectiontime, gid, sid, uid
   </sql>
@@ -90,4 +118,14 @@
       uid = #{uid,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="findCollectById" parameterType="java.lang.Integer" resultMap="BaseResultMap1">
+    SELECT * FROM t_collection c
+    INNER JOIN t_goods g ON c.gid=g.id
+    INNER JOIN t_user u ON c.uid=u.id
+    INNER JOIN t_goods_imgs m ON g.id=m.gid
+  </select>
+
+
+
 </mapper>

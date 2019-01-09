@@ -1,6 +1,7 @@
 package com.zhihui.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class Collection {
     private Integer id;
@@ -12,6 +13,36 @@ public class Collection {
     private Integer sid;
 
     private Integer uid;
+
+    //增加映射字段
+    private User user;
+    private List<Goods> goods;
+    private List<Goodsimgs> goodsimgs;
+
+    public List<Goods> getGoods() {
+        return goods;
+    }
+
+    public void setGoods(List<Goods> goods) {
+        this.goods = goods;
+    }
+
+    public List<Goodsimgs> getGoodsimgs() {
+        return goodsimgs;
+    }
+
+    public void setGoodsimgs(List<Goodsimgs> goodsimgs) {
+        this.goodsimgs = goodsimgs;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
 
     public Integer getId() {
         return id;
