@@ -11,6 +11,23 @@
     <result column="flag" jdbcType="INTEGER" property="flag" />
     <result column="uid" jdbcType="INTEGER" property="uid" />
   </resultMap>
+
+  <resultMap id="BaseResultMap1" type="com.zhihui.entity.ReceivingDetail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="rname" jdbcType="VARCHAR" property="rname" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="phone" jdbcType="INTEGER" property="phone" />
+    <result column="counntry" jdbcType="VARCHAR" property="counntry" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+
+    <association property="user"
+                 resultMap="com.zhihui.dao.UserMapper.BaseResultMap"
+    >
+    </association>
+  </resultMap>
+
   <sql id="Base_Column_List">
     id, rname, address, phone, counntry, city, flag, uid
   </sql>
