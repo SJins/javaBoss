@@ -27,14 +27,10 @@
     <result column="gtid" jdbcType="INTEGER" property="gtid" />
     <result column="flag" jdbcType="INTEGER" property="flag" />
     <result column="price" jdbcType="REAL" property="price" />
-    
+
     <collection property="properties" javaType="java.util.ArrayList"
                  resultMap="com.zhihui.dao.GoodsPropertyMapper.BaseResultMap">
 
-      <id column="id" jdbcType="INTEGER" property="pid" />
-      <result column="info" jdbcType="VARCHAR" property="info" />
-      <result column="level" jdbcType="INTEGER" property="level" />
-      <result column="parent_id" jdbcType="INTEGER" property="parentId" />
     </collection>
     
   </resultMap>
@@ -205,11 +201,11 @@
   </select>
 
   <select id="findGoodsPropertyById" parameterType="java.lang.Integer" resultMap="BaseResultMap1">
-    SELECT g.*,gt.info, gt.id pid, gt.parent_id, gt.`level` FROM t_goods g
+    SELECT g.*,gt.* FROM t_goods g
     INNER JOIN t_goods_goods_property gg
     ON g.id = gg.gid
     INNER JOIN t_goods_property gt
-    ON gt.id = gg.tid
+    ON gt.pid = gg.tid
     WHERE g.id = #{id}
   </select>
 

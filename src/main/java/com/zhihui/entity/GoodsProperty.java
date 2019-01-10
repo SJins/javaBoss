@@ -1,7 +1,7 @@
 package com.zhihui.entity;
 
 public class GoodsProperty {
-    private Integer id;
+    private Integer pid;
 
     private String info;
 
@@ -9,12 +9,12 @@ public class GoodsProperty {
 
     private Integer parentId;
 
-    public Integer getId() {
-        return id;
+    public Integer getPid() {
+        return pid;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setPid(Integer pid) {
+        this.pid = pid;
     }
 
     public String getInfo() {

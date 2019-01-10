@@ -35,13 +35,13 @@ public class GoodsServiceImpl implements GoodsService {
              ) {
             PropertyVo property1 = new PropertyVo();
             if (property.getLevel() == 1) {
-                property1.setId(property.getId());
+                property1.setPid(property.getPid());
                 property1.setInfo(property.getInfo());
                 property1.setChilds(new ArrayList<>());
                 list.add(property1);
             } else {
                 GoodsProperty properts = new GoodsProperty();
-                properts.setId(property.getId());
+                properts.setPid(property.getPid());
                 properts.setInfo(property.getInfo());
                 properts.setParentId(property.getParentId());
 
@@ -56,7 +56,7 @@ public class GoodsServiceImpl implements GoodsService {
     // 查询对象
     private int getGoodsPropertyIndex(int id, List<PropertyVo> goodsProperty) {
         for (int i = 0; i < goodsProperty.size(); i++) {
-            if (goodsProperty.get(i).getId() == id) {
+            if (goodsProperty.get(i).getPid() == id) {
                 return i;
             }
         }
