@@ -6,6 +6,9 @@
     <result column="sid" jdbcType="INTEGER" property="sid" />
     <result column="imgurl" jdbcType="VARCHAR" property="imgurl" />
   </resultMap>
+
+
+
   <sql id="Base_Column_List">
     id, sid, imgurl
   </sql>
@@ -68,4 +71,7 @@
       imgurl = #{imgurl,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+
+
 </mapper>

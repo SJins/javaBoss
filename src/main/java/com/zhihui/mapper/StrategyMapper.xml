@@ -11,6 +11,36 @@
     <result column="deploytime" jdbcType="TIMESTAMP" property="deploytime" />
     <result column="content" jdbcType="VARCHAR" property="content" />
   </resultMap>
+
+
+  <resultMap id="BaseResultMap1" type="com.zhihui.entity.Strategy">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="collectioncount" jdbcType="INTEGER" property="collectioncount" />
+    <result column="commentcount" jdbcType="INTEGER" property="commentcount" />
+    <result column="strategytitle" jdbcType="VARCHAR" property="strategytitle" />
+    <result column="readingcount" jdbcType="INTEGER" property="readingcount" />
+    <result column="deploytime" jdbcType="TIMESTAMP" property="deploytime" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+
+    <association property="user"
+                 resultMap="com.zhihui.dao.UserMapper.BaseResultMap"
+    >
+    </association>
+
+    <association property="userDetail"
+                resultMap="com.zhihui.dao.UserDetailMapper.BaseResultMap"
+    >
+    </association>
+
+    <collection property="strategyImages"
+                resultMap="com.zhihui.dao.StrategyImagesMapper.BaseResultMap"
+    >
+    </collection>
+
+  </resultMap>
+
+
   <sql id="Base_Column_List">
     id, uid, collectioncount, commentcount, strategytitle, readingcount, deploytime, 
     content
@@ -126,4 +156,15 @@
       content = #{content,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="findOneStratey" parameterType="java.lang.Integer" resultMap="BaseResultMap1">
+    SELECT * FROM t_strategy s
+    INNER JOIN t_user u ON s.uid=u.id
+    INNER JOIN t_user_detail d ON d.uid=u.id
+    INNER JOIN t_strategy_images i on i.sid=s.id
+    WHERE s.id=#{id}
+
+  </select>
+
+
 </mapper>

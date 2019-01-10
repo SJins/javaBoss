@@ -14,4 +14,8 @@ public interface StrategyMapper {
     int updateByPrimaryKeySelective(Strategy record);
 
     int updateByPrimaryKey(Strategy record);
+
+    //根据攻略的id,查找攻略的详情信息
+    public Strategy findOneStratey(Integer id);
+
 }

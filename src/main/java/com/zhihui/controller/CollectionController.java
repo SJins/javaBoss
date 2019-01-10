@@ -24,7 +24,7 @@ public class CollectionController {
         return ResultVo.setOK(list);
     }
 
-    @ApiOperation(notes = "我的收藏接口",value = "攻略收藏")
+    @ApiOperation(notes = "我的收藏接口",value = "攻略收藏/我的攻略")
     @RequestMapping("findCollStraById.do")
     public  ResultVo findCollStraById(Integer id){
         List<Strategy> list = collectiongService.findCollStraById(id);
