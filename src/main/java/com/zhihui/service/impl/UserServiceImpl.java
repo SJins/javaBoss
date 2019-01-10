@@ -1,8 +1,10 @@
 package com.zhihui.service.impl;
 
 import com.tools.common.encrypt.EncryptUtil;
+import com.zhihui.dao.UserDetailMapper;
 import com.zhihui.dao.UserMapper;
 import com.zhihui.entity.User;
+import com.zhihui.entity.UserDetail;
 import com.zhihui.service.UserService;
 import com.zhihui.token.Token;
 import com.zhihui.vo.ResultVo;
@@ -16,12 +18,17 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private UserDetailMapper userDetailMapper;
 
     @Override
     public ResultVo register(User user) {
         if (user != null) {
             user.setPassword(EncryptUtil.md5Enc(user.getPassword()));
             if (userMapper.insertSelective(user) > 0) {
+                UserDetail userDetail = new UserDetail();
+                userDetail.setUid(user.getId());
+                userDetailMapper.insertSelective(userDetail);
                 return ResultVo.setOK("注册成功");
             }
         }
