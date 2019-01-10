@@ -124,6 +124,7 @@
     INNER JOIN t_goods g ON c.gid=g.id
     INNER JOIN t_user u ON c.uid=u.id
     INNER JOIN t_goods_imgs m ON g.id=m.gid
+
   </select>
 
 

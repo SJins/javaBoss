@@ -16,6 +16,7 @@ public class CollectionServiceImpl implements CollectiongService {
     @Override
     public List<Goods> findCollById(Integer uid) {
         List<Goods> list = collectionMapper.findCollectById(uid);
+
         return list;
     }
 }
