@@ -1,6 +1,7 @@
 package com.zhihui.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class Strategy {
     private Integer id;
@@ -18,6 +19,35 @@ public class Strategy {
     private Date deploytime;
 
     private String content;
+
+    //添加映射关系
+    private User user;//用户
+    private UserDetail userDetail;//用户详情
+    private List<StrategyImages> strategyImages;//攻略图片
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public UserDetail getUserDetail() {
+        return userDetail;
+    }
+
+    public void setUserDetail(UserDetail userDetail) {
+        this.userDetail = userDetail;
+    }
+
+    public List<StrategyImages> getStrategyImages() {
+        return strategyImages;
+    }
+
+    public void setStrategyImages(List<StrategyImages> strategyImages) {
+        this.strategyImages = strategyImages;
+    }
 
     public Integer getId() {
         return id;

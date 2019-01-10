@@ -1,6 +1,7 @@
 package com.zhihui.controller;
 
 import com.zhihui.entity.Goods;
+import com.zhihui.entity.Strategy;
 import com.zhihui.service.CollectiongService;
 import com.zhihui.vo.ResultVo;
 import io.swagger.annotations.ApiOperation;
@@ -20,6 +21,13 @@ public class CollectionController {
     @RequestMapping("findCollById.do")
     public ResultVo findCollById(Integer uid){
         List<Goods> list = collectiongService.findCollById(uid);
+        return ResultVo.setOK(list);
+    }
+
+    @ApiOperation(notes = "我的收藏接口",value = "攻略收藏/我的攻略")
+    @RequestMapping("findCollStraById.do")
+    public  ResultVo findCollStraById(Integer id){
+        List<Strategy> list = collectiongService.findCollStraById(id);
         return ResultVo.setOK(list);
     }
 }

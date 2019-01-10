@@ -2,35 +2,35 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zhihui.dao.GoodsPropertyMapper">
   <resultMap id="BaseResultMap" type="com.zhihui.entity.GoodsProperty">
-    <id column="pid" jdbcType="INTEGER" property="pid" />
+    <id column="id" jdbcType="INTEGER" property="id" />
     <result column="info" jdbcType="VARCHAR" property="info" />
     <result column="level" jdbcType="INTEGER" property="level" />
     <result column="parent_id" jdbcType="INTEGER" property="parentId" />
   </resultMap>
   <sql id="Base_Column_List">
-    pid, info, level, parent_id
+    id, info, level, parent_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select
+    select 
     <include refid="Base_Column_List" />
     from t_goods_property
-    where pid = #{pid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_goods_property
-    where pid = #{pid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.zhihui.entity.GoodsProperty">
-    insert into t_goods_property (pid, info, level,
+    insert into t_goods_property (id, info, level, 
       parent_id)
-    values (#{pid,jdbcType=INTEGER}, #{info,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER},
+    values (#{id,jdbcType=INTEGER}, #{info,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}, 
       #{parentId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.zhihui.entity.GoodsProperty">
     insert into t_goods_property
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="pid != null">
-        pid,
+      <if test="id != null">
+        id,
       </if>
       <if test="info != null">
         info,
@@ -43,8 +43,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="pid != null">
-        #{pid,jdbcType=INTEGER},
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
       </if>
       <if test="info != null">
         #{info,jdbcType=VARCHAR},
@@ -70,13 +70,13 @@
         parent_id = #{parentId,jdbcType=INTEGER},
       </if>
     </set>
-    where pid = #{pid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.zhihui.entity.GoodsProperty">
     update t_goods_property
     set info = #{info,jdbcType=VARCHAR},
       level = #{level,jdbcType=INTEGER},
       parent_id = #{parentId,jdbcType=INTEGER}
-    where pid = #{pid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

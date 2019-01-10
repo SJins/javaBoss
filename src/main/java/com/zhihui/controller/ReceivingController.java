@@ -10,11 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin
 @RestController
 @RequestMapping("/receiving")
-@ApiOperation(notes = "我的收货地址接口", value = "收货地址")
+
 public class ReceivingController {
     @Autowired
     private ReceivingService receivingService;
 
+    @ApiOperation(notes = "我的收货地址接口", value = "我的地址")
     @RequestMapping("findOneRec.do")
     public ResultVo findOneRec(Integer uid){
         return  receivingService.findOneRec(uid);
