@@ -2,6 +2,8 @@ package com.zhihui.dao;
 
 import com.zhihui.entity.GoodsProperty;
 
+import java.util.List;
+
 public interface GoodsPropertyMapper {
     int deleteByPrimaryKey(Integer id);
 

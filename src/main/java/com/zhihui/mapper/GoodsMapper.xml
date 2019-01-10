@@ -14,6 +14,24 @@
     <result column="flag" jdbcType="INTEGER" property="flag" />
     <result column="price" jdbcType="REAL" property="price" />
   </resultMap>
+
+  <resultMap id="BaseResultMap1" type="com.zhihui.entity.Goods">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="goodsname" jdbcType="VARCHAR" property="goodsname" />
+    <result column="shelftime" jdbcType="TIMESTAMP" property="shelftime" />
+    <result column="commentnum" jdbcType="INTEGER" property="commentnum" />
+    <result column="collectionnum" jdbcType="INTEGER" property="collectionnum" />
+    <result column="brief" jdbcType="VARCHAR" property="brief" />
+    <result column="discount" jdbcType="INTEGER" property="discount" />
+    <result column="discountdetail" jdbcType="VARCHAR" property="discountdetail" />
+    <result column="gtid" jdbcType="INTEGER" property="gtid" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+    <result column="price" jdbcType="REAL" property="price" />
+    
+    <collection property="properties" javaType="java.util.ArrayList"
+                 resultMap="com.zhihui.dao.GoodsPropertyMapper.BaseResultMap"></collection>
+    
+  </resultMap>
   <sql id="Base_Column_List">
     id, goodsname, shelftime, commentnum, collectionnum, brief, discount, discountdetail, 
     gtid, flag, price
@@ -178,6 +196,15 @@
     select
     count(1)
     from t_goods
+  </select>
+
+  <select id="findGoodsPropertyById" parameterType="java.lang.Integer" resultMap="BaseResultMap1">
+    SELECT g.*,gt.info, gt.id pid, gt.parent_id, gt.`level` FROM t_goods g
+    INNER JOIN t_goods_goods_property gg
+    ON g.id = gg.gid
+    INNER JOIN t_goods_property gt
+    ON gt.id = gg.tid
+    WHERE g.id = #{id}
   </select>
 
 </mapper>

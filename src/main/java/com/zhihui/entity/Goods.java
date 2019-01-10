@@ -1,6 +1,7 @@
 package com.zhihui.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class Goods {
     private Integer id;
@@ -24,6 +25,19 @@ public class Goods {
     private Integer flag;
 
     private Float price;
+
+    /**
+     * 一个商品对应多个属性；
+     */
+    private List<GoodsProperty> properties;
+
+    public List<GoodsProperty> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(List<GoodsProperty> properties) {
+        this.properties = properties;
+    }
 
     public Integer getId() {
         return id;

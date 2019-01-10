@@ -18,7 +18,24 @@ public interface GoodsMapper {
 
     int updateByPrimaryKey(Goods record);
 
+    /**
+     * 分页查询对应商品
+     * @param param
+     * @return
+     */
     List<Goods> selectByPage(Map<String,Object> param);
 
+    /**
+     * 查询商品数量
+     * @return
+     */
     int selectCount();
+
+    /**
+     * 根据id查询商品属性
+     * @param id
+     *         商品id
+     * @return
+     */
+    Goods findGoodsPropertyById(Integer id);
 }
