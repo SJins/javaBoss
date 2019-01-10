@@ -3,7 +3,7 @@ package com.zhihui.entity;
 public class ReceivingDetail {
     private Integer id;
 
-    private String rname;
+    private String name;
 
     private String address;
 
@@ -16,7 +16,7 @@ public class ReceivingDetail {
     private Integer flag;
 
     private Integer uid;
-
+    
     private User user;
 
     public User getUser() {
@@ -26,6 +26,8 @@ public class ReceivingDetail {
     public void setUser(User user) {
         this.user = user;
     }
+    
+    
 
     public Integer getId() {
         return id;
@@ -35,12 +37,12 @@ public class ReceivingDetail {
         this.id = id;
     }
 
-    public String getRname() {
-        return rname;
+    public String getName() {
+        return name;
     }
 
-    public void setRname(String rname) {
-        this.rname = rname == null ? null : rname.trim();
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
     public String getAddress() {
