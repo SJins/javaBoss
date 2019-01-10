@@ -16,7 +16,7 @@ public class UserDetailController {
 
     @ApiOperation(notes = "根据传来的token令牌查找到个人信息返回", value = "个人信息接口")
     @PostMapping("/user/myself.do")
-    public ResultVo myself(String token){
+    public ResultVo myself(String token) {
         return userDetailService.myselfMsg(token);
     }
 }

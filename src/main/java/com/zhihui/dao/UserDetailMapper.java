@@ -1,6 +1,7 @@
 package com.zhihui.dao;
 
 import com.zhihui.entity.UserDetail;
+import com.zhihui.vo.PersonalData;
 
 public interface UserDetailMapper {
     int deleteByPrimaryKey(Integer id);
@@ -15,5 +16,5 @@ public interface UserDetailMapper {
 
     int updateByPrimaryKey(UserDetail record);
 
-    UserDetail selectByUid(Integer uId);
+    PersonalData selectByUid(Integer id);
 }

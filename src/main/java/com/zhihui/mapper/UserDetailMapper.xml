@@ -176,6 +176,6 @@
   </update>
   <select id="selectByUid" parameterType="int" resultType="com.zhihui.vo.PersonalData">
     select ud.img,ud.sex,ud.birthday,u.name from t_user_detail ud
-    join t_user u on ud.uid=u.id where u.id=#{uId}
+    join t_user u on ud.uid=u.id where u.id=#{id}
   </select>
 </mapper>
