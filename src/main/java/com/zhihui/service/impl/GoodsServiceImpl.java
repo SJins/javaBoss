@@ -44,6 +44,7 @@ public class GoodsServiceImpl implements GoodsService {
                 properts.setPid(property.getPid());
                 properts.setInfo(property.getInfo());
                 properts.setParentId(property.getParentId());
+                properts.setLevel(property.getLevel());
 
                 list.get(getGoodsPropertyIndex(properts.getParentId(), list)).getChilds().add(properts);
 
