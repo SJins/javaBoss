@@ -15,9 +15,30 @@ public class Collection {
     private Integer uid;
 
     //增加映射字段
+    //商品收藏
     private User user;
     private List<Goods> goods;
     private List<Goodsimgs> goodsimgs;
+
+    //攻略收藏
+    private List<Strategy> strategies;
+    private List<StrategyImages> strategyImages;
+
+    public List<Strategy> getStrategies() {
+        return strategies;
+    }
+
+    public void setStrategies(List<Strategy> strategies) {
+        this.strategies = strategies;
+    }
+
+    public List<StrategyImages> getStrategyImages() {
+        return strategyImages;
+    }
+
+    public void setStrategyImages(List<StrategyImages> strategyImages) {
+        this.strategyImages = strategyImages;
+    }
 
     public List<Goods> getGoods() {
         return goods;
