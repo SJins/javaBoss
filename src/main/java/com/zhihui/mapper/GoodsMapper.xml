@@ -29,7 +29,13 @@
     <result column="price" jdbcType="REAL" property="price" />
     
     <collection property="properties" javaType="java.util.ArrayList"
-                 resultMap="com.zhihui.dao.GoodsPropertyMapper.BaseResultMap"></collection>
+                 resultMap="com.zhihui.dao.GoodsPropertyMapper.BaseResultMap">
+
+      <id column="id" jdbcType="INTEGER" property="pid" />
+      <result column="info" jdbcType="VARCHAR" property="info" />
+      <result column="level" jdbcType="INTEGER" property="level" />
+      <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+    </collection>
     
   </resultMap>
   <sql id="Base_Column_List">
