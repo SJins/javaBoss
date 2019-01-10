@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.shopping.dao.ReceivingDetailMapper">
-  <resultMap id="BaseResultMap" type="com.shopping.entity.ReceivingDetail">
+<mapper namespace="com.zhihui.dao.ReceivingDetailMapper">
+  <resultMap id="BaseResultMap" type="com.zhihui.entity.ReceivingDetail">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="address" jdbcType="VARCHAR" property="address" />
@@ -27,10 +27,7 @@
     >
     </association>
   </resultMap>
-  
-  
-  
-  
+
   <sql id="Base_Column_List">
     id, name, address, phone, counntry, city, flag, uid
   </sql>
@@ -44,7 +41,7 @@
     delete from t_receiving_detail
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.shopping.entity.ReceivingDetail">
+  <insert id="insertRecDetail" parameterType="com.zhihui.entity.ReceivingDetail">
     insert into t_receiving_detail (id, name, address, 
       phone, counntry, city, 
       flag, uid)
@@ -52,7 +49,7 @@
       #{phone,jdbcType=INTEGER}, #{counntry,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
       #{flag,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.shopping.entity.ReceivingDetail">
+  <insert id="insertSelective" parameterType="com.zhihui.entity.ReceivingDetail">
     insert into t_receiving_detail
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -107,7 +104,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.shopping.entity.ReceivingDetail">
+  <update id="updateByPrimaryKeySelective" parameterType="com.zhihui.entity.ReceivingDetail">
     update t_receiving_detail
     <set>
       <if test="name != null">
@@ -134,7 +131,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.shopping.entity.ReceivingDetail">
+  <update id="updateByPrimaryKey" parameterType="com.zhihui.entity.ReceivingDetail">
     update t_receiving_detail
     set name = #{name,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},

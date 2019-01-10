@@ -16,4 +16,10 @@ public class ReceivingServiceImpl implements ReceivingService {
         ReceivingDetail oneRec = receivingDao.findOneRec(uid);
         return ResultVo.setOK(oneRec) ;
     }
+
+    @Override
+    public ResultVo insertRecDetail(ReceivingDetail receivingDetail) {
+        receivingDao.insertRecDetail(receivingDetail);
+        return ResultVo.setOK(1);
+    }
 }

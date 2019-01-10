@@ -5,8 +5,8 @@ import com.zhihui.entity.ReceivingDetail;
 
 public interface ReceivingDetailMapper {
     int deleteByPrimaryKey(Integer id);
-
-    int insert(ReceivingDetail record);
+    //添加收货地址
+    public void insertRecDetail(ReceivingDetail receivingDetail);
 
     int insertSelective(ReceivingDetail record);
 

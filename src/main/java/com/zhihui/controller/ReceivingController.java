@@ -1,5 +1,6 @@
 package com.zhihui.controller;
 
+import com.zhihui.entity.ReceivingDetail;
 import com.zhihui.service.ReceivingService;
 import com.zhihui.vo.ResultVo;
 import io.swagger.annotations.ApiOperation;
@@ -20,4 +21,15 @@ public class ReceivingController {
     public ResultVo findOneRec(Integer uid){
         return  receivingService.findOneRec(uid);
     }
+
+
+    @ApiOperation(notes = "我的收货地址接口", value = "添加收货地址")
+    @RequestMapping("insertRecDetail.do")
+    public ResultVo insertRecDetail(ReceivingDetail receivingDetail){
+
+        return ResultVo.setOK(receivingService.insertRecDetail(receivingDetail));
+    }
+
+
+
 }
