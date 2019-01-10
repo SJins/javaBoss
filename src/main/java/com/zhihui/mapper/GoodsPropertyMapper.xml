@@ -11,7 +11,7 @@
     pid, info, level, parent_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from t_goods_property
     where pid = #{pid,jdbcType=INTEGER}
@@ -21,9 +21,9 @@
     where pid = #{pid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.zhihui.entity.GoodsProperty">
-    insert into t_goods_property (pid, info, level, 
+    insert into t_goods_property (pid, info, level,
       parent_id)
-    values (#{pid,jdbcType=INTEGER}, #{info,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}, 
+    values (#{pid,jdbcType=INTEGER}, #{info,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER},
       #{parentId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.zhihui.entity.GoodsProperty">

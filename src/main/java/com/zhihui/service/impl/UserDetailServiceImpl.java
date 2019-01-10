@@ -2,6 +2,7 @@ package com.zhihui.service.impl;
 
 import com.zhihui.dao.UserDetailMapper;
 import com.zhihui.entity.User;
+import com.zhihui.entity.UserDetail;
 import com.zhihui.service.UserDetailService;
 import com.zhihui.token.Token;
 import com.zhihui.vo.PersonalData;
@@ -14,10 +15,21 @@ public class UserDetailServiceImpl implements UserDetailService {
 
     @Autowired
     private UserDetailMapper userDetailMapper;
+
     @Override
     public ResultVo myselfMsg(String token) {
         User user = Token.token.get(token);
         PersonalData data = userDetailMapper.selectByUid(user.getId());
         return ResultVo.setOK(data);
+    }
+
+    @Override
+    public ResultVo updateMsg(String token, UserDetail userDetail) {
+        User user = Token.token.get(token);
+        userDetail.setUid(user.getId());
+        if (userDetailMapper.updateByUidSelective(userDetail) > 0) {
+            return ResultVo.setOK("修改成功");
+        }
+        return ResultVo.setERROR();
     }
 }

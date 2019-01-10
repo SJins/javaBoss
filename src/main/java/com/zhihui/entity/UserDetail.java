@@ -1,5 +1,7 @@
 package com.zhihui.entity;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import java.util.Date;
 
 public class UserDetail {
@@ -26,6 +28,16 @@ public class UserDetail {
     private Integer growthrate;
 
     private Integer growvalue;
+
+    private MultipartFile file;
+
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public void setFile(MultipartFile file) {
+        this.file = file;
+    }
 
     public Integer getId() {
         return id;
