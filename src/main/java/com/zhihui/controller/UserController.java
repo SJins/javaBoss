@@ -50,7 +50,7 @@ public class UserController {
     }
 
     @ApiOperation(notes = "验证码接口，需要传过来邮箱地址，验证码有效期三分钟",value = "注册邮箱验证码")
-    @GetMapping("sendcodetoeamil.do")
+    @GetMapping("sendcodetoemail.do")
     public ResultVo sendCodeToEmail(String email){
         String random = CodeUtil.random();
         JedisUtil jedisUtil = new JedisUtil("39.105.189.141",6379,"qfjava");
