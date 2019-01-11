@@ -187,7 +187,20 @@
     select
     <include refid="Base_Column_List" />
     from t_goods
-    where gtid = #{gtid,jdbcType=INTEGER}
+    <trim suffixOverrides=",">
+      <choose>
+        <when test="gtid != null">
+          where gtid = #{gtid,jdbcType=INTEGER},
+        </when>
+        <when test="goodsname != null">
+          where goodsname like "%"#{goodsname,jdbcType=VARCHAR}"%",
+        </when>
+        <otherwise>
+          where id = #{id,jdbcType=INTEGER}
+        </otherwise>
+      </choose>
+    </trim>
+
     ORDER BY collectionnum DESC
     LIMIT #{index}, #{limit}
 

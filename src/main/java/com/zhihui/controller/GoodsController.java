@@ -24,7 +24,7 @@ public class GoodsController {
     @Autowired
     private GoodsService goodsService;
 
-    @ApiOperation(notes = "展示所有商品类型", tags = "展示商品类型" ,value = "展示商品类型")
+    @ApiOperation(notes = "展示所有商品", tags = "展示商品" ,value = "展示商品")
     @RequestMapping("findGoodsView.do")
     @ResponseBody
     /**
@@ -43,4 +43,10 @@ public class GoodsController {
     }
 
 
+    @ApiOperation(notes = "展示对应的商品", value = "根据模糊查询展示商品")
+    @RequestMapping("fingGoodsByGoodsName.do")
+    @ResponseBody
+    public PageBeanVo<GoodsViewVo> findGoodsByGoodsName(String goodsname, int page, int limit) {
+        return goodsViewVoService.findGoodsView(goodsname, page, limit);
+    }
 }

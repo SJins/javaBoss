@@ -34,13 +34,98 @@ public class GoodsViewServiceImpl implements GoodsViewVoService {
         map.put("gtid", gtid);
 
 
+        List<GoodsViewVo> list = ViewGoods(map);
+
+
+        return PageBeanVo.setPage(goodsDao.selectCount(), list);
+    }
+
+    @Override
+    /**
+     * 根据商品名字进行模糊查询
+     */
+    public PageBeanVo<GoodsViewVo> findGoodsView(String goodsname, int page, int limit) {
+
+        Map<String, Object> map = new HashMap<>();
+
+        map.put("index", (page - 1) * limit);
+        map.put("limit", limit);
+        map.put("goodsname", goodsname);
+
+        List<GoodsViewVo> list = ViewGoods(map);
+
+
+        return PageBeanVo.setPage(goodsDao.selectCount(), list);
+    }
+
+    /*@Override*/
+    /**
+     * 根据商品id查询对应商品
+     */
+   /* public PageBeanVo<GoodsViewVo> findGoodsViewById(Integer id, int page, int limit) {
+        Map<String, Object> map = new HashMap<>();
+
+        map.put("index", (page - 1) * limit);
+        map.put("limit", limit);
+        map.put("id", id);
+
+        List<GoodsViewVo> list = ViewGoods(map);
+
+        return PageBeanVo.setPage(goodsDao.selectCount(), list);
+    }*/
+
+    /**
+     * 计算对应的时间差
+     * @param beginDate
+     *              现在的时间
+     * @param endDate
+     *              上架时间
+     * @return
+     *      String类型
+     */
+    private String getDatePoor(Date beginDate, Date endDate) {
+        long nd = 1000 * 24 * 60 * 60;
+        long nh = 1000 * 60 * 60;
+        long nm = 1000 * 60;
+        long ns = 1000;
+        // 获得两个时间的毫秒时间差异
+        long diff = 0;
+
+        diff = beginDate.getTime()  - (endDate.getTime()- (8 * nh));
+
+
+        long day = diff / nd;
+        long h = diff / nh;
+        long s = diff / ns;
+        long m = diff / nm;
+
+
+        if (s < 60) {
+            return s + "秒前";
+        } else if (s >= 60 && m < 60) {
+            return m + "分钟前";
+        } else if (m >= 60 && h < 24 ) {
+            return h + "小时前";
+        } else if (h >= 24 && day < 3) {
+            return day + "天前";
+        } else {
+            long begin = beginDate.getTime();
+            SimpleDateFormat time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String times = time.format(begin);
+            return times;
+        }
+
+    }
+
+    private List<GoodsViewVo> ViewGoods(Map<String, Object> map) {
+
         // 根据菜单id查找对应的商品
         List<Goods> goodsList = goodsDao.selectByPage(map);
 
         List<GoodsViewVo> list = new ArrayList<>();
         // 遍历对应菜单的商品
         for (Goods goods : goodsList
-             ) {
+        ) {
             // 商品flag为0时正常显示，为1时，已删除。
             if (goods.getFlag() != 1) {
                 GoodsViewVo view = new GoodsViewVo();
@@ -93,77 +178,6 @@ public class GoodsViewServiceImpl implements GoodsViewVoService {
             }
 
         }
-
-
-
-        return PageBeanVo.setPage(goodsDao.selectCount(), list);
-    }
-
-    /**
-     * 计算对应的时间差
-     * @param beginDate
-     *              现在的时间
-     * @param endDate
-     *              上架时间
-     * @return
-     *      String类型
-     */
-    private String getDatePoor(Date beginDate, Date endDate) {
-        long nd = 1000 * 24 * 60 * 60;
-        long nh = 1000 * 60 * 60;
-        long nm = 1000 * 60;
-        long ns = 1000;
-        // 获得两个时间的毫秒时间差异
-        long diff = 0;
-        /* if(beginDate.after(endDate)) {*/
-        diff = beginDate.getTime()  - (endDate.getTime()- (8 * nh));
-        // }
-
-    /*else {
-    diff = endDate.getTime() - (beginDate.getTime() + (8 * nh));
-    }*/
-
-        long day = diff / nd;
-        long h = diff / nh;
-        long s = diff / ns;
-        long m = diff / nm;
-
-
-        if (s < 60) {
-            return s + "秒前";
-        } else if (s >= 60 && m < 60) {
-            return m + "分钟前";
-        } else if (m >= 60 && h < 24 ) {
-            return h + "小时前";
-        } else if (h >= 24 && day < 3) {
-            return day + "天前";
-        } else {
-            long begin = beginDate.getTime();
-            SimpleDateFormat time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String times = time.format(begin);
-            return times;
-        }
-       /* // 计算差多少天
-        long day = diff / nd;
-        // 计算差多少小时
-        long hour = diff % nd / nh;
-        // 计算差多少分钟
-        long min = diff % nd % nh / nm;
-        // 计算差多少秒//输出结果
-        long sec = diff % nd % nh % nm / ns;
-        if (sec < 60) {
-            return sec + "秒前";
-        } else if (sec >= 60 && min < 60) {
-            return min + "分钟前";
-        } else if (min >= 60 && hour < 24) {
-            return hour + "小时前";
-        } else if (hour >= 24 && day < 3) {
-            return day + "天前";
-        } else {
-            long begin = beginDate.getTime();
-            SimpleDateFormat time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String times = time.format(begin);
-            return times;
-        }*/
+        return list;
     }
 }
