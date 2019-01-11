@@ -6,6 +6,7 @@ import com.zhihui.vo.ResultVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,5 +38,14 @@ public class UserController {
     @PostMapping("logout.do")
     public ResultVo logout(String token) {
         return userService.logout(token);
+    }
+
+
+    //根据用户id,查找用户信息，绑定需要修改的用户名字
+    @ApiOperation(notes = "绑定需要修改的用户名字",value = "修改用户的名字，绑定名字信息接口")
+    @GetMapping("findUNameById.do")
+    public ResultVo findUNameById(Integer id){
+        User user = userService.findUNameById(id);
+        return  ResultVo.setOK(user);
     }
 }

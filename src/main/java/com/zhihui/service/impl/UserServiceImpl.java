@@ -60,4 +60,10 @@ public class UserServiceImpl implements UserService {
         Token.token.remove(token);
         return ResultVo.setOK("注销成功");
     }
+
+    @Override
+    public User findUNameById(Integer id) {
+        User user = userMapper.findUNameById(id);
+        return user;
+    }
 }
