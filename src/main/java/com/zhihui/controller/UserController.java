@@ -50,7 +50,7 @@ public class UserController {
     }
 
     //修改用户名字
-    @ApiOperation(notes = "修改用户名字",value = "修改用户名字")
+    @ApiOperation(notes = "修改用户名字",value = "修改用户名字（外送：修改密码/邮件都可用此接口）")
     @GetMapping("updateUName.do")
     public  ResultVo updateUName(User user){
         userService.updateUName(user);
