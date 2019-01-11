@@ -16,4 +16,8 @@ public interface UserMapper {
     int updateByPrimaryKey(User record);
 
     User selectByEmail(String email);
+    //根据用户的id,修改昵称
+//    public  void  updateName(Integer id);
+
+    //根据用户id,
 }

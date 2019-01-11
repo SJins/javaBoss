@@ -6,6 +6,7 @@ import com.zhihui.vo.ResultVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -56,7 +57,7 @@ public class UserDetailController {
 
     //根据用户id,查找用户的个人资料
     @ApiOperation(notes = "个人资料接口",value = "个人资料")
-    @RequestMapping("findOneDetail.do")
+    @GetMapping("findOneDetail.do")
     public ResultVo findOneDetail(Integer id){
         UserDetail detail = userDetailService.findOneDetail(id);
         return  ResultVo.setOK(detail);

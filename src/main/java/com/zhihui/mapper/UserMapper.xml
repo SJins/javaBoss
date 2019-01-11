@@ -88,4 +88,9 @@
     <include refid="Base_Column_List" />
     from t_user where email =#{email};
   </select>
+
+  <!--<update id="updateName" parameterType="string">-->
+    <!---->
+  <!--</update>-->
+
 </mapper>
