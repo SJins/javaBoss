@@ -1,13 +1,16 @@
 package com.zhihui.controller;
 
+import com.zhihui.Utils.CodeUtil;
+import com.zhihui.Utils.EmailUtil;
+import com.zhihui.Utils.JedisUtil;
 import com.zhihui.entity.User;
 import com.zhihui.service.UserService;
 import com.zhihui.vo.ResultVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -21,8 +24,15 @@ public class UserController {
     //用户注册
     @ApiOperation(notes = "注册账号接口", value = "注册")
     @PostMapping("register.do")
-    public ResultVo registerUser(User user) {
-        return userService.register(user);
+    public ResultVo registerUser(User user, String code) {
+
+        JedisUtil jedisUtil = new JedisUtil("39.105.189.141",6379,"qfjava");
+        if(jedisUtil.exists(user.getEmail())){
+            if(jedisUtil.get(user.getEmail()).equals(code)){
+                return userService.register(user);
+            }
+        }
+        return ResultVo.setERROR();
     }
 
     // 用户登录
@@ -37,5 +47,15 @@ public class UserController {
     @PostMapping("logout.do")
     public ResultVo logout(String token) {
         return userService.logout(token);
+    }
+
+    @ApiOperation(notes = "验证码接口，需要传过来邮箱地址，验证码有效期三分钟",value = "注册邮箱验证码")
+    @GetMapping("sendcodetoeamil.do")
+    public ResultVo sendCodeToEmail(String email){
+        String random = CodeUtil.random();
+        JedisUtil jedisUtil = new JedisUtil("39.105.189.141",6379,"qfjava");
+        jedisUtil.save(email,random);
+        jedisUtil.expire(email,180);
+       return EmailUtil.sendCodeToEmail(email, random);
     }
 }

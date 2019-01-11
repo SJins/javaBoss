@@ -24,6 +24,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public ResultVo register(User user) {
         if (user != null) {
+            if (userMapper.selectByEmail(user.getEmail()) != null) {
+                return ResultVo.setERROR();
+            }
             user.setPassword(EncryptUtil.md5Enc(user.getPassword()));
             if (userMapper.insertSelective(user) > 0) {
                 UserDetail userDetail = new UserDetail();

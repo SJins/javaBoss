@@ -27,8 +27,8 @@ public class UserDetailController {
         return userDetailService.myselfMsg(token);
     }
 
-    @ApiOperation(notes = "修改个人信息", value = "修改信息")
-    @PostMapping("/updateMsg.do")
+    @ApiOperation(notes = "修改个人信息以及上传头像", value = "修改信息")
+    @PostMapping("/user/updateMsg.do")
     public ResultVo updateMsg(String token, HttpServletRequest request, UserDetail userDetail) throws IOException {
         String serverName = request.getSession().getServletContext().getRealPath("/");
         File file = new File(serverName);
