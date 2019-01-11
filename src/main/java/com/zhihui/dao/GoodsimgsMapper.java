@@ -17,5 +17,11 @@ public interface GoodsimgsMapper {
 
     int updateByPrimaryKey(Goodsimgs record);
 
+    /**
+     * 根据商品id查找对应图片
+     * @param gid
+     *      商品id
+     * @return
+     */
     List<Goodsimgs> findAllImg(Integer gid);
 }

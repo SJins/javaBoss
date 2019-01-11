@@ -192,11 +192,8 @@
         <when test="gtid != null">
           where gtid = #{gtid,jdbcType=INTEGER},
         </when>
-        <when test="goodsname != null">
-          where goodsname like "%"#{goodsname,jdbcType=VARCHAR}"%",
-        </when>
         <otherwise>
-          where id = #{id,jdbcType=INTEGER}
+          where goodsname like "%"#{goodsname,jdbcType=VARCHAR}"%"
         </otherwise>
       </choose>
     </trim>
