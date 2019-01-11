@@ -17,7 +17,7 @@ public interface UserMapper {
 
     User selectByEmail(String email);
     //根据用户的id,修改昵称
-//    public  void  updateName(Integer id);
+   public  void  updateUName(User user);
 
     //根据用户id,绑定用户的名字信息
     public  User findUNameById(Integer id);

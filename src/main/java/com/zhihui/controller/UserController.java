@@ -48,4 +48,15 @@ public class UserController {
         User user = userService.findUNameById(id);
         return  ResultVo.setOK(user);
     }
+
+    //修改用户名字
+    @ApiOperation(notes = "修改用户名字",value = "修改用户名字")
+    @GetMapping("updateUName.do")
+    public  ResultVo updateUName(User user){
+        userService.updateUName(user);
+    return ResultVo.setOK(user);
+    }
+
+
+
 }

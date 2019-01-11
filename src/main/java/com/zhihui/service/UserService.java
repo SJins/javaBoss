@@ -12,4 +12,6 @@ public interface UserService {
     ResultVo logout(String token);
 
     public  User findUNameById(Integer id);
+
+    public void updateUName(User user);
 }

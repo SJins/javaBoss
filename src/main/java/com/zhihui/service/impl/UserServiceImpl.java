@@ -66,4 +66,9 @@ public class UserServiceImpl implements UserService {
         User user = userMapper.findUNameById(id);
         return user;
     }
+
+    @Override
+    public void updateUName(User user) {
+        userMapper.updateUName(user);
+    }
 }
