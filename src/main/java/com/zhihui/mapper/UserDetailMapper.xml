@@ -15,6 +15,27 @@
     <result column="growthrate" jdbcType="INTEGER" property="growthrate" />
     <result column="growvalue" jdbcType="INTEGER" property="growvalue" />
   </resultMap>
+
+  <resultMap id="BaseResultMap1" type="com.zhihui.entity.UserDetail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="img" jdbcType="VARCHAR" property="img" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="idcarimg" jdbcType="VARCHAR" property="idcarimg" />
+    <result column="goldcoin" jdbcType="INTEGER" property="goldcoin" />
+    <result column="integral" jdbcType="INTEGER" property="integral" />
+    <result column="VitalityValue" jdbcType="INTEGER" property="vitalityvalue" />
+    <result column="growthrate" jdbcType="INTEGER" property="growthrate" />
+    <result column="growvalue" jdbcType="INTEGER" property="growvalue" />
+
+    <association property="user"
+                 resultMap="com.zhihui.dao.UserMapper.BaseResultMap"
+    >
+    </association>
+  </resultMap>
+
   <sql id="Base_Column_List">
     id, img, sex, birthday, level, uid, idcarimg, goldcoin, integral, VitalityValue, 
     growthrate, growvalue
@@ -214,4 +235,11 @@
     </set>
     where uid = #{uid,jdbcType=INTEGER}
   </update>
+
+
+  <select id="findOneDetail" parameterType="java.lang.Integer" resultMap="BaseResultMap1">
+    SELECT * FROM t_user_detail d
+    INNER JOIN t_user u ON u.id=d.uid
+    WHERE u.id=#{id}
+  </select>
 </mapper>

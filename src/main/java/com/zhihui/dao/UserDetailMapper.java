@@ -20,4 +20,7 @@ public interface UserDetailMapper {
     int updateByPrimaryKey(UserDetail record);
 
     PersonalData selectByUid(Integer id);
+
+    //根据用户id,显示个人资料信息
+    public  UserDetail findOneDetail(Integer id);
 }

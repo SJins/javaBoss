@@ -32,4 +32,10 @@ public class UserDetailServiceImpl implements UserDetailService {
         }
         return ResultVo.setERROR();
     }
+
+    @Override
+    public UserDetail findOneDetail(Integer id) {
+        UserDetail detail = userDetailMapper.findOneDetail(id);
+        return detail;
+    }
 }
