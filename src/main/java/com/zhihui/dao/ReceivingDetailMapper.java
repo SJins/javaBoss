@@ -1,11 +1,11 @@
 package com.zhihui.dao;
 
-
 import com.zhihui.entity.ReceivingDetail;
 
 public interface ReceivingDetailMapper {
     int deleteByPrimaryKey(Integer id);
-    //添加收货地址
+
+    //添加一个新地址
     public void insertRecDetail(ReceivingDetail receivingDetail);
 
     int insertSelective(ReceivingDetail record);
@@ -16,6 +16,6 @@ public interface ReceivingDetailMapper {
 
     int updateByPrimaryKey(ReceivingDetail record);
     
-  //根据id查找我的收获地址详情
+    //根据id查找我的收获地址详情
     public ReceivingDetail findOneRec(Integer uid);
 }

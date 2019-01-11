@@ -27,7 +27,7 @@
 		<property name="driverClassName"
 			value="com.mysql.jdbc.Driver" />
 		<property name="url"
-			value="jdbc:mysql://13.250.74.156:3306/shangcheng" />
+			value="jdbc:mysql://13.250.74.156:3306/shangcheng?characterEncoding=UTF-8" />
 		<property name="username" value="root" />
 		<property name="password" value="1111" />
 		<!-- 配置初始化大小、最小、最大 -->
