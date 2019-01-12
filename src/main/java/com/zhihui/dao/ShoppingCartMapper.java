@@ -4,8 +4,9 @@ import com.zhihui.entity.ShoppingCart;
 
 public interface ShoppingCartMapper {
     int deleteByPrimaryKey(Integer id);
-
-    int insert(ShoppingCart record);
+    //添加购物车
+    public void insertScart(ShoppingCart record);
+    public ShoppingCart findShop(Integer uid);
 
     int insertSelective(ShoppingCart record);
 

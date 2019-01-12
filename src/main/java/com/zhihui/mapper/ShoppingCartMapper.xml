@@ -22,7 +22,7 @@
     insert into t_shopping_cart (id, uid)
     values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.zhihui.entity.ShoppingCart">
+  <insert id="insertScart" parameterType="com.zhihui.entity.ShoppingCart"  useGeneratedKeys="true" keyProperty="id">
     insert into t_shopping_cart
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -40,6 +40,7 @@
         #{uid,jdbcType=INTEGER},
       </if>
     </trim>
+
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.zhihui.entity.ShoppingCart">
     update t_shopping_cart
@@ -55,4 +56,10 @@
     set uid = #{uid,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="findShop" parameterType="java.lang.Integer" resultMap="BaseResultMap" >
+    SELECT * FROM t_shopping_cart
+    WHERE uid=#{uid}
+  </select>
+
 </mapper>

@@ -4,8 +4,8 @@ import com.zhihui.entity.CarGoods;
 
 public interface CarGoodsMapper {
     int deleteByPrimaryKey(Integer id);
-
-    int insert(CarGoods record);
+    //添加购物车
+    public void insertCgoods(CarGoods record);
 
     int insertSelective(CarGoods record);
 
@@ -14,4 +14,7 @@ public interface CarGoodsMapper {
     int updateByPrimaryKeySelective(CarGoods record);
 
     int updateByPrimaryKey(CarGoods record);
+
+
+
 }

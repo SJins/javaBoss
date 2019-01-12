@@ -20,7 +20,7 @@
     delete from t_car_goods
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.zhihui.entity.CarGoods">
+  <insert id="insertCgoods" parameterType="com.zhihui.entity.CarGoods">
     insert into t_car_goods (id, scid, gid, 
       num)
     values (#{id,jdbcType=INTEGER}, #{scid,jdbcType=INTEGER}, #{gid,jdbcType=INTEGER}, 
