@@ -1,5 +1,7 @@
 package com.zhihui.entity;
 
+import java.util.List;
+
 public class CarGoods {
     private Integer id;
 
@@ -8,6 +10,53 @@ public class CarGoods {
     private Integer gid;
 
     private Integer num;
+
+    //加入映射字段
+    private List<Goods> goods;
+    private  List<GoodsProperty> goodsProperties;
+    private List<Goodsimgs> goodsimgs;
+    private ShoppingCart shoppingCart;
+    private User user;
+
+    public List<Goods> getGoods() {
+        return goods;
+    }
+
+    public void setGoods(List<Goods> goods) {
+        this.goods = goods;
+    }
+
+    public List<GoodsProperty> getGoodsProperties() {
+        return goodsProperties;
+    }
+
+    public void setGoodsProperties(List<GoodsProperty> goodsProperties) {
+        this.goodsProperties = goodsProperties;
+    }
+
+    public List<Goodsimgs> getGoodsimgs() {
+        return goodsimgs;
+    }
+
+    public void setGoodsimgs(List<Goodsimgs> goodsimgs) {
+        this.goodsimgs = goodsimgs;
+    }
+
+    public ShoppingCart getShoppingCart() {
+        return shoppingCart;
+    }
+
+    public void setShoppingCart(ShoppingCart shoppingCart) {
+        this.shoppingCart = shoppingCart;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public Integer getId() {
         return id;
