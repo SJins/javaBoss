@@ -10,9 +10,11 @@ import com.zhihui.entity.Comment;
 import com.zhihui.entity.Reply;
 import com.zhihui.entity.User;
 import com.zhihui.service.CommentVoService;
+import com.zhihui.token.Token;
 import com.zhihui.vo.CommentVo;
 import com.zhihui.vo.PersonalData;
 import com.zhihui.vo.ReplyVo;
+import com.zhihui.vo.ResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -152,6 +154,33 @@ public class GoodsCommentServiceImpl implements CommentVoService {
 
 
         return list;
+    }
+
+    @Override
+    public ResultVo addCommentByGid(Comment comment, String token) {
+
+        if (comment.getGid() != null) {
+            User user = Token.token.get(token);
+            Comment comment1 = new Comment();
+            comment1.setUid(user.getId());
+
+            Date date = new Date();
+
+            comment1.setCommentTime(date);
+            comment1.setContent(comment.getContent());
+            comment1.setGid(comment.getGid());
+            commentDao.addCommentByGid(comment1);
+        } else {
+            User user1 = Token.token.get(token);
+            Comment comment2 = new Comment();
+            comment2.setUid(user1.getId());
+            comment2.setCommentTime(comment.getCommentTime());
+            comment2.setContent(comment.getContent());
+            comment2.setSid(comment.getSid());
+            commentDao.addCommentBySid(comment2);
+        }
+
+        return ResultVo.setOK(0);
     }
 
 

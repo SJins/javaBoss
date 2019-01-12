@@ -117,6 +117,23 @@
     <include refid="Base_Column_List" />
     from t_comment
     where sid = #{sid,jdbcType=INTEGER}
-
   </select>
+  <insert id="addCommentByGid" parameterType="com.zhihui.entity.Comment">
+    insert into t_comment (id, gid,
+      content, uid, comment_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{gid,jdbcType=INTEGER},
+      #{content,jdbcType=VARCHAR}, #{uid,jdbcType=INTEGER}, #{commentTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+
+  <insert id="addCommentBySid" parameterType="com.zhihui.entity.Comment">
+    insert into t_comment (id, sid,
+      content, uid, comment_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{sid,jdbcType=INTEGER},
+      #{content,jdbcType=VARCHAR}, #{uid,jdbcType=INTEGER}, #{commentTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+
 </mapper>

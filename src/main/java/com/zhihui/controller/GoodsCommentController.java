@@ -1,5 +1,6 @@
 package com.zhihui.controller;
 
+import com.zhihui.entity.Comment;
 import com.zhihui.service.CommentVoService;
 import com.zhihui.vo.CommentVo;
 import com.zhihui.vo.ResultVo;
@@ -33,5 +34,12 @@ public class GoodsCommentController {
     public ResultVo findCommentBySid(Integer sid) {
         List<CommentVo> list = commentVoService.findCommentBySid(sid);
         return ResultVo.setOK(list);
+    }
+
+    @ApiOperation(notes = "添加评论", value = "添加评论")
+    @RequestMapping("addComment.do")
+    @ResponseBody
+    public ResultVo addComment(Comment comment, String token) {
+        return commentVoService.addCommentByGid(comment, token);
     }
 }

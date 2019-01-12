@@ -34,4 +34,18 @@ public interface CommentMapper {
      * @return
      */
     List<Comment> findCommentBySid(Integer sid);
+
+    /**
+     * 添加商品评论
+     * @param comment
+     * @return
+     */
+    int addCommentByGid(Comment comment);
+
+    /**
+     * 添加攻略评论
+     * @param comments
+     * @return
+     */
+    int addCommentBySid(Comment comments);
 }

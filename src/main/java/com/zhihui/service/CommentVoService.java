@@ -1,6 +1,8 @@
 package com.zhihui.service;
 
+import com.zhihui.entity.Comment;
 import com.zhihui.vo.CommentVo;
+import com.zhihui.vo.ResultVo;
 
 import java.util.List;
 
@@ -19,4 +21,14 @@ public interface CommentVoService {
      * @return
      */
     List<CommentVo> findCommentBySid(Integer sid);
+
+    /**
+     * 添加商品评论
+     * @param comment
+     * @param token
+     * @return
+     */
+    ResultVo addCommentByGid(Comment comment, String token);
+
+
 }
