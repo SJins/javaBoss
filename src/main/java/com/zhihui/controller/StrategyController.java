@@ -1,7 +1,6 @@
 package com.zhihui.controller;
 
 import com.tools.vo.PageBeanVo;
-import com.zhihui.dao.StrategyMapper;
 import com.zhihui.entity.Strategy;
 import com.zhihui.service.StrategyService;
 import com.zhihui.vo.ResultVo;
@@ -14,8 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(produces = "攻略接口", value = "攻略接口")
 @RestController
 public class StrategyController {
-    @Autowired
-    private StrategyMapper strategyMapper;
 
     @Autowired
     private StrategyService strategyService;
@@ -23,7 +20,7 @@ public class StrategyController {
     @ApiOperation(notes = "攻略详情" ,value = "攻略详情")
     @GetMapping("findOneStrategyById.do")
     public ResultVo findOneStrategyById(Integer id){
-        Strategy stratey = strategyMapper.findOneStratey(id);
+        Strategy stratey = strategyService.fondOneStrateyBiId(id);
         return ResultVo.setOK(stratey);
     }
 
