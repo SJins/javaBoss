@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(produces = "攻略展示接口", value = "攻略")
+@Api(produces = "攻略接口", value = "攻略接口")
 @RestController
 public class StrategyController {
     @Autowired

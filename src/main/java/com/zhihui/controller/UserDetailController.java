@@ -1,6 +1,5 @@
 package com.zhihui.controller;
 
-import com.zhihui.entity.UserDetail;
 import com.zhihui.service.UserDetailService;
 import com.zhihui.vo.ResultVo;
 import io.swagger.annotations.Api;
