@@ -103,4 +103,11 @@
       reply_time = #{replyTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="findReplyByCid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_reply
+    where cid = #{cid,jdbcType=INTEGER}
+  </select>
 </mapper>

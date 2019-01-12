@@ -103,4 +103,20 @@
       comment_time = #{commentTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="findCommentByGid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  select
+  <include refid="Base_Column_List" />
+  from t_comment
+  where gid = #{gid,jdbcType=INTEGER}
+
+  </select>
+
+  <select id="findCommentBySid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_comment
+    where sid = #{sid,jdbcType=INTEGER}
+
+  </select>
 </mapper>

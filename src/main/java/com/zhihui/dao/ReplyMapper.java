@@ -2,6 +2,8 @@ package com.zhihui.dao;
 
 import com.zhihui.entity.Reply;
 
+import java.util.List;
+
 public interface ReplyMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface ReplyMapper {
     int updateByPrimaryKeySelective(Reply record);
 
     int updateByPrimaryKey(Reply record);
+
+    List<Reply> findReplyByCid(Integer cid);
 }

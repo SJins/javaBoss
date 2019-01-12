@@ -2,8 +2,10 @@ package com.zhihui.service.impl;
 
 import com.tools.vo.PageBeanVo;
 import com.zhihui.dao.GoodsMapper;
+import com.zhihui.dao.GoodsTypeMapper;
 import com.zhihui.dao.GoodsimgsMapper;
 import com.zhihui.entity.Goods;
+import com.zhihui.entity.GoodsType;
 import com.zhihui.entity.Goodsimgs;
 import com.zhihui.service.GoodsViewVoService;
 import com.zhihui.vo.GoodsViewVo;
@@ -22,6 +24,9 @@ public class GoodsViewServiceImpl implements GoodsViewVoService {
     @Autowired
     private GoodsimgsMapper goodsimgDao;
 
+    @Autowired
+    private GoodsTypeMapper goodsTypeDao;
+
     @Override
     /**
      * 根据菜单id展示对应的商品
@@ -33,8 +38,15 @@ public class GoodsViewServiceImpl implements GoodsViewVoService {
         map.put("limit", limit);
         map.put("gtid", gtid);
 
+        GoodsType goodsType = goodsTypeDao.selectByPrimaryKey(gtid);
+        GoodsViewVo viewVo = new GoodsViewVo();
+        viewVo.setTypename(goodsType.getTname());
+
+
 
         List<GoodsViewVo> list = ViewGoods(map);
+
+        list.add(viewVo);
 
 
         return PageBeanVo.setPage(goodsDao.selectCount(), list);
