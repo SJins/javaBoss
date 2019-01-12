@@ -41,7 +41,7 @@ public class UserDetailController {
             String path1 = upFile.getPath();
             String dirPath = "http://13.250.74.156:8080/images/";
             if (!headImg.isEmpty()) {
-                if (upFile.exists()) {
+                if (!upFile.exists()) {
                     upFile.mkdirs();
                 }
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
