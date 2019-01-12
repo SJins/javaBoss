@@ -71,7 +71,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUName(User user) {
-        userMapper.updateUName(user);
+    public ResultVo updateNickname(String token, String name) {
+        User user = Token.token.get(token);
+        if(user!=null){
+            user.setName(name);
+            if(userMapper.updateByPrimaryKeySelective(user)>0){
+                return ResultVo.setOK("修改成功");
+            }
+        }
+        return ResultVo.setERROR();
     }
+
+
 }

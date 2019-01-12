@@ -242,4 +242,11 @@
     INNER JOIN t_user u ON u.id=d.uid
     WHERE u.id=#{id}
   </select>
+
+  <select id="selectUserDetailByUid" parameterType="int" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_user_detail
+    where uid = #{id,jdbcType=INTEGER}
+  </select>
 </mapper>

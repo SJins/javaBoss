@@ -9,7 +9,7 @@ import org.springframework.core.convert.converter.Converter;
 public class CustomerDateConvert implements Converter<String, Date> {
 
 	SimpleDateFormat[] formats = new SimpleDateFormat[] { new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"),
-			new SimpleDateFormat("yyyy-MM-dd"), new SimpleDateFormat("yyyyMMdd"), new SimpleDateFormat("yyyy/MM/dd") };
+			new SimpleDateFormat("yyyy-MM-dd"), new SimpleDateFormat("yyyy年MM月dd日"), new SimpleDateFormat("yyyy/MM/dd") };
 
 	@Override
 	public Date convert(String str) {

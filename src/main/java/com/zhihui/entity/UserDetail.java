@@ -29,7 +29,6 @@ public class UserDetail {
 
     private Integer growvalue;
 
-    private MultipartFile file;
     //添加映射字段
     private  User user;
 
@@ -39,14 +38,6 @@ public class UserDetail {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public MultipartFile getFile() {
-        return file;
-    }
-
-    public void setFile(MultipartFile file) {
-        this.file = file;
     }
 
     public Integer getId() {

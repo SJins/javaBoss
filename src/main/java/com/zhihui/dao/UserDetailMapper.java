@@ -13,6 +13,8 @@ public interface UserDetailMapper {
 
     UserDetail selectByPrimaryKey(Integer id);
 
+    UserDetail selectUserDetailByUid(Integer id);
+
     int updateByPrimaryKeySelective(UserDetail record);
 
     int updateByUidSelective(UserDetail userDetail);

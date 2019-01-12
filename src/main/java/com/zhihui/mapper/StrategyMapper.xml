@@ -166,5 +166,9 @@
 
   </select>
 
+  <select id="selectAllStrategy" resultType="com.zhihui.vo.StrategyVO">
+    select s.id,s.collectioncount,s.commentcount,s.strategytitle,si.simgurl
+     from t_strategy s join t_strategy_images si on s.id=si.sid
+  </select>
 
 </mapper>

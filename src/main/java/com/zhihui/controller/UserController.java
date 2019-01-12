@@ -26,9 +26,9 @@ public class UserController {
     @PostMapping("register.do")
     public ResultVo registerUser(User user, String code) {
 
-        JedisUtil jedisUtil = new JedisUtil("39.105.189.141",6379,"qfjava");
-        if(jedisUtil.exists(user.getEmail())){
-            if(jedisUtil.get(user.getEmail()).equals(code)){
+        JedisUtil jedisUtil = new JedisUtil("39.105.189.141", 6379, "qfjava");
+        if (jedisUtil.exists(user.getEmail())) {
+            if (jedisUtil.get(user.getEmail()).equals(code)) {
                 return userService.register(user);
             }
         }
@@ -49,13 +49,19 @@ public class UserController {
         return userService.logout(token);
     }
 
-    @ApiOperation(notes = "验证码接口，需要传过来邮箱地址，验证码有效期三分钟",value = "注册邮箱验证码")
+    @ApiOperation(notes = "验证码接口，需要传过来邮箱地址，验证码有效期三分钟", value = "注册邮箱验证码")
     @GetMapping("sendcodetoemail.do")
-    public ResultVo sendCodeToEmail(String email){
+    public ResultVo sendCodeToEmail(String email) {
         String random = CodeUtil.random();
-        JedisUtil jedisUtil = new JedisUtil("39.105.189.141",6379,"qfjava");
-        jedisUtil.save(email,random);
-        jedisUtil.expire(email,180);
-       return EmailUtil.sendCodeToEmail(email, random);
+        JedisUtil jedisUtil = new JedisUtil("39.105.189.141", 6379, "qfjava");
+        jedisUtil.save(email, random);
+        jedisUtil.expire(email, 180);
+        return EmailUtil.sendCodeToEmail(email, random);
+    }
+
+    @ApiOperation(notes = "传入token和修改之后的昵称修改昵称", value = "修改昵称接口")
+    @PostMapping("/user/updateNickname.do")
+    public ResultVo updateNickname(String token, String name) {
+        return userService.updateNickname(token, name);
     }
 }

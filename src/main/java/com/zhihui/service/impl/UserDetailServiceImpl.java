@@ -10,6 +10,8 @@ import com.zhihui.vo.ResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 public class UserDetailServiceImpl implements UserDetailService {
 
@@ -24,11 +26,15 @@ public class UserDetailServiceImpl implements UserDetailService {
     }
 
     @Override
-    public ResultVo updateMsg(String token, UserDetail userDetail) {
+    public ResultVo updateMsg(String token, String headImg) {
         User user = Token.token.get(token);
-        userDetail.setUid(user.getId());
-        if (userDetailMapper.updateByUidSelective(userDetail) > 0) {
-            return ResultVo.setOK("修改成功");
+        UserDetail userDetail = userDetailMapper.selectUserDetailByUid(user.getId());
+
+        if (userDetail!=null) {
+            userDetail.setImg(headImg);
+            if (userDetailMapper.updateByUidSelective(userDetail) > 0) {
+                return ResultVo.setOK("修改成功");
+            }
         }
         return ResultVo.setERROR();
     }
@@ -37,5 +43,19 @@ public class UserDetailServiceImpl implements UserDetailService {
     public UserDetail findOneDetail(Integer id) {
         UserDetail detail = userDetailMapper.findOneDetail(id);
         return detail;
+    }
+
+    @Override
+    public ResultVo updateSexAndBirthday(String token, Integer sex, Date birthday) {
+        User user = Token.token.get(token);
+        UserDetail userDetail = userDetailMapper.selectUserDetailByUid(user.getId());
+        if(userDetail!=null){
+            userDetail.setBirthday(birthday);
+            userDetail.setSex(sex);
+            if(userDetailMapper.updateByUidSelective(userDetail)>0){
+                return ResultVo.setOK("修改成功");
+            }
+        }
+        return ResultVo.setERROR();
     }
 }
