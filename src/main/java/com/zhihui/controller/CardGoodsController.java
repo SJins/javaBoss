@@ -20,10 +20,12 @@ public class CardGoodsController {
    @Autowired
    private  ShoppingCartServiec shoppingCartServiec;
    @GetMapping("addCart.do")
-   @ApiOperation(notes = "购物车添加",value = "购物车添加商品接口")
-    public ResultVo addCart(CarGoods carGoods,String token){
-
-        carGoodsService.insertCgoods(carGoods,token);
+   @ApiOperation(notes = "购物车添加",value = "购物车添加商品接口(gid商品id，num商品数量)")
+    public ResultVo addCart(int gid,int num,String token){
+       CarGoods carGoods = new CarGoods();
+       carGoods.setGid(gid);
+       carGoods.setNum(num);
+       carGoodsService.insertCgoods(carGoods,token);
 
         return  ResultVo.setOK(0);
     }
