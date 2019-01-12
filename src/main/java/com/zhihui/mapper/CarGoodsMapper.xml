@@ -7,6 +7,33 @@
     <result column="gid" jdbcType="INTEGER" property="gid" />
     <result column="num" jdbcType="INTEGER" property="num" />
   </resultMap>
+
+  <resultMap id="BaseResultMap1" type="com.zhihui.entity.CarGoods">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="scid" jdbcType="INTEGER" property="scid" />
+    <result column="gid" jdbcType="INTEGER" property="gid" />
+    <result column="num" jdbcType="INTEGER" property="num" />
+
+    <association property="user"
+                 resultMap="com.zhihui.dao.UserMapper.BaseResultMap"
+    >
+    </association>
+    <association property="shoppingCart"
+                 resultMap="com.zhihui.dao.ShoppingCartMapper.BaseResultMap"
+    >
+    </association>
+    <collection property="goods"
+                resultMap="com.zhihui.dao.GoodsMapper.BaseResultMap3"
+    >
+    </collection>
+
+    <collection property="goodsProperties"
+                resultMap="com.zhihui.dao.GoodsPropertyMapper.BaseResultMap"
+    >
+    </collection>
+
+  </resultMap>
+
   <sql id="Base_Column_List">
     id, scid, gid, num
   </sql>
@@ -79,4 +106,15 @@
       num = #{num,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="findCarGoods" parameterType="java.lang.Integer" resultMap="BaseResultMap1">
+    SELECT * FROM t_car_goods cg
+    INNER JOIN t_goods g ON g.id=cg.gid
+    INNER JOIN t_goods_imgs i ON i.gid = g.id
+    INNER JOIN t_goods_property gp ON gp.pid=g.id
+    INNER JOIN t_shopping_cart s ON s.id=cg.scid
+    INNER JOIN t_user u ON u.id=s.uid
+    WHERE u.id=#{id}
+  </select>
+
 </mapper>

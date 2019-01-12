@@ -25,11 +25,20 @@ public class Goods {
     private Integer flag;
 
     private Float price;
-
+    //一个商品对应多个图片
+    private List<Goodsimgs> goodsimgs;
     /**
      * 一个商品对应多个属性；
      */
     private List<GoodsProperty> properties;
+
+    public List<Goodsimgs> getGoodsimgs() {
+        return goodsimgs;
+    }
+
+    public void setGoodsimgs(List<Goodsimgs> goodsimgs) {
+        this.goodsimgs = goodsimgs;
+    }
 
     public List<GoodsProperty> getProperties() {
         return properties;

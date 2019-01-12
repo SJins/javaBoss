@@ -14,9 +14,9 @@ public class CarGoods {
     //加入映射字段
     private List<Goods> goods;
     private  List<GoodsProperty> goodsProperties;
-    private List<Goodsimgs> goodsimgs;
     private ShoppingCart shoppingCart;
     private User user;
+
 
     public List<Goods> getGoods() {
         return goods;
@@ -34,13 +34,6 @@ public class CarGoods {
         this.goodsProperties = goodsProperties;
     }
 
-    public List<Goodsimgs> getGoodsimgs() {
-        return goodsimgs;
-    }
-
-    public void setGoodsimgs(List<Goodsimgs> goodsimgs) {
-        this.goodsimgs = goodsimgs;
-    }
 
     public ShoppingCart getShoppingCart() {
         return shoppingCart;

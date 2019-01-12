@@ -11,6 +11,8 @@ import com.zhihui.token.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CarGoodsServiceImpl implements CarGoodsService {
     @Autowired
@@ -41,5 +43,13 @@ public class CarGoodsServiceImpl implements CarGoodsService {
             carGoodsMapper.insertCgoods(carGoods);
         }
 
+    }
+
+    @Override
+    public List<CarGoods> findCarGoods(String token) {
+        User user = Token.token.get(token);
+        Integer id = user.getId();
+        List<CarGoods> carGoods = carGoodsMapper.findCarGoods(id);
+        return carGoods;
     }
 }

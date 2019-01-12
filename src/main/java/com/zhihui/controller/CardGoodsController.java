@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class CardGoodsController {
    @Autowired
@@ -24,6 +26,13 @@ public class CardGoodsController {
         carGoodsService.insertCgoods(carGoods,token);
 
         return  ResultVo.setOK(0);
+    }
+
+    @GetMapping("findCarGoods.do")
+    @ApiOperation(notes = "购物车显示商品",value = "购物车显示商品")
+    public ResultVo findCarGoods(String token){
+        List<CarGoods> list = carGoodsService.findCarGoods(token);
+        return  ResultVo.setOK(list);
     }
 
 }
